@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}でら! Studio 公式サイト{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .visual-content {
+            background-color:rgb(0, 140, 255);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .visual-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .visual-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+        }
+
+        .sidebar ul li a:hover {
+            color:rgb(0, 110, 255);
+        }
+
+        .divider {
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+
+        .top-border {
+            border-top: 5px solidrgb(0, 110, 255);
+        }
+
+        @media (max-width: 768px) {
+            .visual-content {
+                padding: 20px;
+            }
+
+            .visual-content h1 {
+                font-size: 2rem;
+            }
+
+            .sidebar {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'main/images/slide2.png' %}" alt="Logo" width="80" height="50" class="rounded-circle">
+                            <a href="https://www.youtube.com/watch?v=m8vsw_dqBKA" target="_blank" class="btn btn-sm" style="background-color:#e53935;color:white;"><span style="font-weight:bold;"></span> <span style="font-size:1.2em;">&#x25B6;</span></a>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-black" href="{% url 'home' %}">🏠 ホーム</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-black" href="{% url 'about' %}">🏢 会社案内</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-black" href="{% url 'services' %}">🛠 サービス</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-black" href="{% url 'portfolio' %}">⭐ 実績</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-black" href="{% url 'blog' %}">📝 ブログ</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-black" href="{% url 'contact' %}">✉️ お問い合わせ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+        <!-- Left Side: Visual Content -->
+        <div class="visual-content flex-grow-1">
+            {% block visual_content %}
+            <div class="hero-section" style="margin-top:120px;">
+                <h1>でら! Studioへようこそ</h1>
+                <p>笑顔あふれるサービスを名古屋からお届けします。</p>
+                <img src="{% static 'main/images/dera9.png' %}" alt="Smiling Character">
+            </div>
+
+            <div class="about-us-section mt-5">
+                <h2>会社案内</h2>
+                <p>でら! Studioは名古屋を拠点に、動画作成教室・eスポーツ体験・ITサポートなど、地域に根ざしたデジタルサービスを提供しています。お客様一人ひとりに寄り添い、笑顔と満足をお届けします。</p>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="footer">
+        {% block footer %}
+        <p>&copy; 2025 でら! Studio. 全ての権利を保有します。</p>
+        <a href="#privacy-policy">Privacy Policy</a> | <a href="#terms-of-service">Terms of Service</a> | <a href="#faq">FAQ</a>
+        <div class="mt-2">
+            <a href="#" class="btn btn-sm btn-outline-secondary">Back to Top</a>
+        </div>
+        <div class="divider"></div>
+        <div class="sidebar-footer">
+            <ul class="nav flex-row justify-content-center">
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-black" href="{% url 'home' %}">🏠 ホーム</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-black" href="{% url 'about' %}">🏢 会社案内</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-black" href="{% url 'services' %}">🛠 サービス</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-black" href="{% url 'portfolio' %}">⭐ 実績</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-black" href="{% url 'blog' %}">📝 ブログ</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-black" href="{% url 'contact' %}">✉️ お問い合わせ</a>
+                </li>
+            </ul>
+            <div class="divider"></div>
+            <p>公式SNS・連絡先:</p>
+            <a href="#" class="btn btn-sm" style="background-color:#25d366;color:white;">LINE</a>
+            <a href="https://www.youtube.com/watch?v=m8vsw_dqBKA" target="_blank" class="btn btn-sm" style="background-color:#e53935;color:white;"><span style="font-weight:bold;">YouTube</span> <span style="font-size:1.2em;">&#x25B6;</span></a>
+            <a href="#" class="btn btn-sm" style="background-color:#c13584;color:white;">Instagram</a>
+        </div>
+        <div id="footerCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#footerCarousel" data-slide-to="0" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Footer Slide 1</h5>
+                        <p>Description for Footer Slide 1.</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#footerCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#footerCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
